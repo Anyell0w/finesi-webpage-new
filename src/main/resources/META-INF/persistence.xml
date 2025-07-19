@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence 
+             https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    
+    <!-- Unidad de persistencia principal -->
+    <persistence-unit name="finesi-pu" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        
+        <!-- Clases de entidad -->
+        <class>com.finesi.webapp.model.Usuario</class>
+        <class>com.finesi.webapp.model.Noticia</class>
+        <class>com.finesi.webapp.model.ProgramaEstudio</class>
+        <class>com.finesi.webapp.model.Contacto</class>
+        
+        <!-- Excluir clases no listadas explícitamente -->
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        
+        <properties>
+            <!-- Configuración de conexión a PostgreSQL -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/finesi-webpage-db"/>
+            <property name="jakarta.persistence.jdbc.user" value="tu_usuario"/>
+            <property name="jakarta.persistence.jdbc.password" value="tu_password"/>
+            
+            <!-- Configuración de Hibernate -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            
+            <!-- Configuración de pool de conexiones -->
+            <property name="hibernate.c3p0.min_size" value="5"/>
+            <property name="hibernate.c3p0.max_size" value="20"/>
+            <property name="hibernate.c3p0.timeout" value="300"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+            <property name="hibernate.c3p0.idle_test_period" value="3000"/>
+            
+            <!-- Configuración de esquema -->
+            <property name="hibernate.default_schema" value="finesi"/>
+            
+            <!-- Configuración de logging -->
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.generate_statistics" value="false"/>
+            
+            <!-- Configuración de cache (opcional) -->
+            <property name="hibernate.cache.use_second_level_cache" value="false"/>
+            <property name="hibernate.cache.use_query_cache" value="false"/>
+        </properties>
+    </persistence-unit>
+    
+    <!-- Unidad de persistencia para testing -->
+    <persistence-unit name="finesi-test-pu" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        
+        <class>com.finesi.webapp.model.Usuario</class>
+        <class>com.finesi.webapp.model.Noticia</class>
+        <class>com.finesi.webapp.model.ProgramaEstudio</class>
+        <class>com.finesi.webapp.model.Contacto</class>
+        
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        
+        <properties>
+            <!-- Configuración para base de datos de testing -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/finesi-webpage-test"/>
+            <property name="jakarta.persistence.jdbc.user" value="tu_usuario"/>
+            <property name="jakarta.persistence.jdbc.password" value="tu_password"/>
+            
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.default_schema" value="finesi"/>
+        </properties>
+    </persistence-unit>
+    
+</persistence>

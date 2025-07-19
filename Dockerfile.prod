@@ -1,0 +1,3 @@
+DB_HOST=${PGHOST}
+DB_USER=${PGUSER}
+
