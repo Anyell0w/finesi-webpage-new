@@ -20,9 +20,9 @@
         <properties>
             <!-- Configuración de conexión a PostgreSQL -->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/finesi-webpage-db"/>
-            <property name="jakarta.persistence.jdbc.user" value="tu_usuario"/>
-            <property name="jakarta.persistence.jdbc.password" value="tu_password"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://postgres.railway.internal:5432/railway"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+            <property name="jakarta.persistence.jdbc.password" value="skSnQRDyLOWlAQIjQcIeSREaBVrlcqtQ"/>
             
             <!-- Configuración de Hibernate -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
